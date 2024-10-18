@@ -4,9 +4,9 @@ import Avatar from "@mui/material/Avatar";
 import LockIcon from "@mui/icons-material/Lock";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import RegisterForm from "../../components/auth/RegisterForm";
+import RegisterForm from "../../../components/auth/RegisterForm";
 
-const Register = () => {
+const RegisterPage = () => {
   return (
     <Container maxWidth="lg">
       <Grid
@@ -46,4 +46,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterPage;

@@ -1,9 +1,8 @@
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
-import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
-import LoginForm from "../../components/auth/LoginForm";
+import LoginForm from "../../../components/auth/LoginForm";
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <Container maxWidth="lg" sx={{ minHeight: "76.7vh" }}>
       <Grid
@@ -32,7 +31,7 @@ const Login = () => {
           </Typography>
           <LoginForm />
           <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Box to="/register">Do you have not an account?</Box>
+            <Box>Do you have not an account?</Box>
           </Box>
         </Grid>
       </Grid>
@@ -40,4 +39,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

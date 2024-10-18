@@ -49,7 +49,7 @@ const RegisterForm = () => {
       }}
       validationSchema={registerSchema}
       onSubmit={(values, actions) => {
-        register(values);
+        
         actions.resetForm();
         actions.setSubmitting(false);
       }}
