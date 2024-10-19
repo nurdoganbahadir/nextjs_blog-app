@@ -1,4 +1,5 @@
-"use client";
+"use client"; // Bu satırı eklediğinizden emin olun
+
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -14,14 +15,19 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
-function Header() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+const Header: React.FC = () => {
+  const [anchorElNav, setAnchorElNav] = React.useState<HTMLElement | null>(
+    null
+  );
+  const [anchorElUser, setAnchorElUser] = React.useState<HTMLElement | null>(
+    null
+  );
 
-  const handleOpenNavMenu = (event) => {
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
+
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
@@ -42,7 +48,7 @@ function Header() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -91,8 +97,6 @@ function Header() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
-                justifyContent: { md: "center" },
-                alignItems: { md: "center" },
               }}
             >
               <MenuItem onClick={handleCloseNavMenu}>
@@ -111,7 +115,7 @@ function Header() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -136,13 +140,13 @@ function Header() {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
-              new blog
+              New Blog
             </Button>
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
-              about
+              About
             </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
@@ -176,5 +180,6 @@ function Header() {
       </Container>
     </AppBar>
   );
-}
+};
+
 export default Header;

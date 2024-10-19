@@ -1,7 +1,12 @@
 import Footer from "../components/footer";
 import Header from "../components/header";
+import { ReactNode } from "react";
 
-export default function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
       <body style={{ margin: "0px" }}>
@@ -11,4 +16,6 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
