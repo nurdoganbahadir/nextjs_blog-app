@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Link from "next/link";
 
 const Header: React.FC = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<HTMLElement | null>(
@@ -48,7 +49,7 @@ const Header: React.FC = () => {
             variant="h6"
             noWrap
             component="a"
-            href="#"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -100,13 +101,61 @@ const Header: React.FC = () => {
               }}
             >
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography sx={{ textAlign: "center" }}>Dashboard</Typography>
+                <Link
+                  href="/dashboard"
+                  style={{
+                    textDecoration: "none",
+                    width: "100%",
+                    margin: "0px",
+                    color: "black",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      textAlign: "center",
+                    }}
+                  >
+                    Dashboard
+                  </Typography>
+                </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography sx={{ textAlign: "center" }}>New Blog</Typography>
+                <Link
+                  href="/newblog"
+                  style={{
+                    textDecoration: "none",
+                    width: "100%",
+                    margin: "0px",
+                    color: "black",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      textAlign: "center",
+                    }}
+                  >
+                    New Blog
+                  </Typography>
+                </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography sx={{ textAlign: "center" }}>About</Typography>
+                <Link
+                  href="/about"
+                  style={{
+                    textDecoration: "none",
+                    width: "100%",
+                    margin: "0px",
+                    color: "black",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      textAlign: "center",
+                    }}
+                  >
+                    About
+                  </Typography>
+                </Link>
               </MenuItem>
             </Menu>
           </Box>
@@ -115,7 +164,7 @@ const Header: React.FC = () => {
             variant="h5"
             noWrap
             component="a"
-            href="#"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -134,19 +183,43 @@ const Header: React.FC = () => {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
-              Dashboard
+              <Link
+                href="/dashboard"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                }}
+              >
+                Dashboard
+              </Link>
             </Button>
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
-              New Blog
+              <Link
+                href="/newblog"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                }}
+              >
+                New Blog
+              </Link>
             </Button>
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
-              About
+              <Link
+                href="/about"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                }}
+              >
+                About
+              </Link>
             </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
