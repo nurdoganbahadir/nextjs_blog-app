@@ -16,7 +16,7 @@ const aboutStyle: React.CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
   margin: "auto",
-  minHeight: "83.5vh",
+  minHeight: "83vh",
   border: "none",
   textAlign: "center",
 };
