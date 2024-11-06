@@ -6,6 +6,13 @@ import axios from "axios";
 interface AuthContextType {
   user: any;
   login: (email: string, password: string) => Promise<void>;
+  register: (
+    email: string,
+    password: string,
+    username: string,
+    firstName: string,
+    lastName: string
+  ) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -22,14 +29,34 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         { email, password }
       );
       setUser(data);
-      router.push("/")
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const register = async (
+    username: string,
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string
+  ) => {
+    try {
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_apiKey}users/`,
+        { username, email, password, firstName, lastName }
+      );
+      console.log(data);
+      setUser(data);
+      router.push("/");
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, login }}>
+    <AuthContext.Provider value={{ user, login, register }}>
       {children}
     </AuthContext.Provider>
   );

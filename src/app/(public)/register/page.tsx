@@ -10,13 +10,20 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
+import { useAuth } from "../../../contexts/AuthContext";
 
 const Register: React.FC = () => {
+  const { register } = useAuth();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    register(username, email, password, firstName, lastName);
+  };
 
   return (
     <Container maxWidth="lg">
@@ -49,66 +56,64 @@ const Register: React.FC = () => {
             Register
           </Typography>
 
-          <Box>
-            <Box>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                <TextField
-                  label="User Name"
-                  name="username"
-                  id="username"
-                  type="text"
-                  variant="outlined"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-                <TextField
-                  label="First Name"
-                  name="firstName"
-                  id="firstName"
-                  type="text"
-                  variant="outlined"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-                <TextField
-                  label="Last Name"
-                  name="lastName"
-                  id="lastName"
-                  type="text"
-                  variant="outlined"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-                <TextField
-                  label="Email"
-                  name="email"
-                  id="email"
-                  type="email"
-                  variant="outlined"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <TextField
-                  label="Password"
-                  name="password"
-                  id="password"
-                  type="password"
-                  variant="outlined"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <Button
-                  type="submit"
-                  variant="contained"
-                  size="large"
-                  sx={{
-                    backgroundColor: "#0367A6",
-                    "&:hover": { backgroundColor: "#023373" },
-                  }}
-                >
-                  Submit
-                </Button>
-              </Box>
+          <Box component="form" onSubmit={handleSubmit}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <TextField
+                label="User Name"
+                name="username"
+                id="username"
+                type="text"
+                variant="outlined"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <TextField
+                label="First Name"
+                name="firstName"
+                id="firstName"
+                type="text"
+                variant="outlined"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              <TextField
+                label="Last Name"
+                name="lastName"
+                id="lastName"
+                type="text"
+                variant="outlined"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+              <TextField
+                label="Email"
+                name="email"
+                id="email"
+                type="email"
+                variant="outlined"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <TextField
+                label="Password"
+                name="password"
+                id="password"
+                type="password"
+                variant="outlined"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                sx={{
+                  backgroundColor: "#0367A6",
+                  "&:hover": { backgroundColor: "#023373" },
+                }}
+              >
+                Submit
+              </Button>
             </Box>
           </Box>
 
