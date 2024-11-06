@@ -8,10 +8,17 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
+import { useAuth } from "../../../contexts/AuthContext";
 
 const Login: React.FC = () => {
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    login(email, password);
+  };
 
   return (
     <Container maxWidth="lg">
@@ -43,7 +50,7 @@ const Login: React.FC = () => {
             Login
           </Typography>
 
-          <Box>
+          <Box component="form" onSubmit={handleSubmit}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <TextField
                 label="Email"
