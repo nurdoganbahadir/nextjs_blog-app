@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 interface AuthContextType {
-  user: any;
+  token: string;
   login: (email: string, password: string) => Promise<void>;
   register: (
     email: string,
@@ -19,7 +19,8 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<any>(null);
-  console.log(user);
+  const token = user ? user.token : null;
+
   const router = useRouter();
 
   const login = async (email: string, password: string) => {
@@ -56,7 +57,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register }}>
+    <AuthContext.Provider value={{ token, login, register }}>
       {children}
     </AuthContext.Provider>
   );
